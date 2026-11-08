@@ -1,0 +1,13 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://127.0.0.1:11434",
+    "ANTHROPIC_AUTH_TOKEN": "ollama",
+    "ANTHROPIC_API_KEY": "",
+    "ANTHROPIC_MODEL": "qwen3.5-coding:4b",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "qwen3.5-coding:4b",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "qwen3.5-coding:4b",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "qwen3.5-coding:4b",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "qwen3.5-coding:4b",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "qwen3.5-coding:4b"
+  }
+}

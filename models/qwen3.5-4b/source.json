@@ -1,0 +1,10 @@
+{
+  "model": "qwen3.5:4b",
+  "recorded_at": "2026-11-09",
+  "manifest_url": "https://registry.ollama.ai/v2/library/qwen3.5/manifests/4b",
+  "weight_sha256": "a9d0a3e1d8c91732a3812becd31f8d4a8ff57414903f226306069f0437e2ac50",
+  "weight_bytes": 2648593216,
+  "projector_sha256": "e56a899b1540860385465756dd308c84417410b94dbc1c380adffd20a921ca60",
+  "projector_bytes": 675569120,
+  "note": "Source metadata for this installation. The upstream tag can change; Initialize-Model.ps1 downloads the tag available when it runs."
+}

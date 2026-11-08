@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.gguf
+*.safetensors
+*.exe
+*.zip
+*.log
+__pycache__/
+.venv/
+work/
+downloads/
+models/blobs/
+.claude/settings.local.json
