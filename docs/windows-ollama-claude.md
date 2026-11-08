@@ -1,5 +1,7 @@
 # Windows：Ollama 本地编程
 
+已完成安装后的日常使用，请看 [操作手册](operation-manual.md) 或下载仓库后打开 [交互界面手册](ui-guide/index.html)。本文保留首次安装、模型初始化与供应商配置步骤。
+
 ## 1. 安装 Ollama
 
 本实践将软件和模型放在 D 盘：

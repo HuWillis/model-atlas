@@ -15,6 +15,17 @@ qwen3.5-coding:4b：本地模型推理
 
 这里使用 Claude Code 作为编程工具，实际回答由本机 Qwen 模型生成。CC Switch 负责切换配置；在直连模式下，请求直接进入 Ollama。
 
+## 操作手册
+
+已经安装好，想知道每天怎么使用？从这里开始：
+
+- **[中文操作说明书](docs/operation-manual.md)**：启动、状态判断、CC Switch 切换、编程任务、停止与排查。
+- **[可点击的界面手册](docs/ui-guide/index.html)**：6 步教学演示，含状态切换、命令复制和实测回放；适配电脑与手机屏幕。
+
+GitHub 会将 HTML 显示为源码。下载或克隆仓库后，双击 `docs/ui-guide/index.html` 即可离线使用，无需安装依赖。演示按钮不会操作本机软件，页面显示的是示例状态。
+
+[![Model Atlas 操作手册界面预览](docs/ui-guide/preview.png)](docs/operation-manual.md)
+
 ## 当前实践
 
 | 项目 | 配置 |
