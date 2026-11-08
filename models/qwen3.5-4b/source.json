@@ -1,6 +1,8 @@
 {
   "model": "qwen3.5:4b",
   "recorded_at": "2026-11-09",
+  "base_manifest_sha256": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+  "coding_manifest_sha256": "b572cfef927a4ff6e1d967c37033e96614c58146811aedac7b755241be639c96",
   "manifest_url": "https://registry.ollama.ai/v2/library/qwen3.5/manifests/4b",
   "weight_sha256": "a9d0a3e1d8c91732a3812becd31f8d4a8ff57414903f226306069f0437e2ac50",
   "weight_bytes": 2648593216,

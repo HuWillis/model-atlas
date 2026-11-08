@@ -28,6 +28,8 @@ qwen3.5-coding:4b：本地模型推理
 
 安装过程与日常使用见 [Windows 部署指南](docs/windows-ollama-claude.md)，本机验证状态见 [实践记录](docs/validation-2026-11-09.md)。
 
+**2026-11-09 实测通过**：Claude Code 经本机 Ollama 调用 `Read`、`Edit` 修改 Python 文件，6 项功能测试全部通过。Ryzen 7 H 255 / 32 GB 环境下使用 CPU 推理，该小任务耗时约 95 秒。
+
 ## 从安装到使用
 
 在 PowerShell 中，从仓库根目录执行：
