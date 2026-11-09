@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Model Atlas 本地控制台：启动 Ollama、管理模型内存、发送真实测试问题。">
+  <title>Model Atlas · 本地控制台</title>
+  <link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到控制台</a>
+<aside class="sidebar">
+  <a class="brand" href="/"><span class="brand-mark">A</span><span>Model Atlas<small>模型地图</small></span></a>
+  <div class="nav-label">WORKSPACE</div>
+  <nav><a class="active" href="#main">◉ &nbsp; 本地控制台</a><a href="#test">↗ &nbsp; 模型测试</a><a href="https://github.com/HuWillis/model-atlas/blob/main/docs/console.md" target="_blank" rel="noreferrer">☰ &nbsp; 使用说明</a></nav>
+  <div class="sidebar-bottom"><span class="local-mark">● 仅本机访问</span><p>模型在你的电脑上运行。<br>测试内容不保存到仓库。</p><a href="https://github.com/HuWillis/model-atlas" target="_blank" rel="noreferrer">GitHub 仓库 ↗</a></div>
+</aside>
+<main id="main">
+  <div class="topline"><span class="eyebrow">LOCAL WORKSPACE / 01</span><div class="connection"><span id="connection">连接控制台中…</span><button class="text-button" id="refresh">刷新</button></div></div>
+  <header><div><p class="eyebrow">让本地模型真正运行起来</p><h1>你的模型，你的工作台。</h1><p class="subtitle">启动服务，选择模型，再发送一个真实的问题。</p></div><span class="live-badge">实时控制</span></header>
+  <div id="notice" class="notice" role="status" aria-live="polite">正在读取本机状态…</div>
+  <section class="metrics" aria-label="实时状态">
+    <div class="metric"><span>OLLAMA 服务</span><strong id="service-state">—</strong><small id="service-detail">等待连接</small></div>
+    <div class="metric"><span>模型驻留内存</span><strong id="memory-state">—</strong><small id="memory-detail">等待读取 /api/ps</small></div>
+    <div class="metric"><span>模型使用显存</span><strong id="vram-state">—</strong><small id="vram-detail">等待读取分配情况</small></div>
+  </section>
+  <div class="workspace-grid">
+    <section class="panel service-panel" aria-labelledby="service-title">
+      <div class="section-heading"><span class="step-number">01</span><div><h2 id="service-title">服务与模型</h2><p>这里的按钮会直接操作本机。</p></div></div>
+      <div class="service-actions"><button class="primary" id="start" disabled>启动 Ollama</button><button id="stop" disabled>停止服务</button></div>
+      <p class="hint" id="service-help">正在确认服务状态。</p>
+      <div class="divider"></div>
+      <label for="model">已安装的模型</label><select id="model" disabled><option value="">启动服务后读取模型</option></select>
+      <div class="model-meta" id="model-meta">模型列表来自本机 Ollama。</div>
+      <label for="context">本次加载 / 测试的上下文</label><select id="context"><option value="4096">4K · 轻量测试</option><option value="8192" selected>8K · 日常测试</option><option value="16384">16K</option><option value="32768">32K</option><option value="65536">64K · 更多内存</option></select>
+      <div class="model-actions"><button class="primary" id="load" disabled>加载模型</button><button id="unload" disabled>释放模型内存</button></div>
+      <p class="hint">测试默认使用 8K 上下文，空闲 10 分钟后释放内存；不会更改 Claude Code 的模型配置。</p>
+      <div class="loaded-block"><h3>当前驻留</h3><div id="loaded">尚未读取模型状态。</div></div>
+    </section>
+    <section class="panel test-panel" id="test" aria-labelledby="test-title">
+      <div class="section-heading"><span class="step-number">02</span><div><h2 id="test-title">试着问一个问题</h2><p>直接请求本地模型，查看实际回答。</p></div></div>
+      <div class="prompt-tools"><label for="prompt">测试问题</label><button class="text-button" id="example">填入编程示例 ↗</button></div>
+      <textarea id="prompt" rows="5" maxlength="12000" placeholder="例如：用 Python 写一个去重函数，保留元素首次出现的顺序。"></textarea>
+      <div class="send-row"><span class="hint">单轮测试 · 最多输出 1024 token</span><button class="primary" id="send" disabled>发送测试 ↗</button></div>
+      <div class="answer-heading"><h3>模型回答</h3><span id="job-state" role="status" aria-live="polite">等待你的第一个问题</span></div>
+      <div class="answer" id="answer"><div class="empty" id="empty"><span class="empty-symbol">✳</span><strong>让一个小问题，成为起点。</strong><p>模型的真实回答会在这里逐步显示。<br>首次加载和 CPU 推理可能需要等待。</p></div><pre id="response" hidden></pre></div>
+      <div class="result-meta" id="result-meta">测试只生成回答，不会修改你的项目文件。</div>
+    </section>
+  </div>
+  <section class="bottom-grid"><div><h3>准备好用它写代码了？</h3><p>在 CC Switch 中选中本地供应商，然后新开 Claude Code 会话。这里选中的模型只用于控制台测试。</p><div class="command"><code id="command">claude --model qwen3.5-coding:4b</code><button id="copy">复制</button></div></div><div><h3>硬件与运行提示</h3><p id="gpu-detail">正在检查显卡监测接口。</p><p>“驻留内存”表示模型已经加载，可能正在等待请求。资源分配比例不等于实时 CPU 使用率。</p></div></section>
+  <footer><span id="updated">等待首次更新</span><button class="text-button" id="exit">退出控制台</button></footer>
+</main>
+<noscript>控制台需要 JavaScript。请启用 JavaScript 后刷新。</noscript>
+</body>
+</html>
